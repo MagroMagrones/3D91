@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D91 | Soluções em Impressão 3D</title>
+	
+	<link rel="icon" type="image/png" href="assets/logo.png">
+    
+    <link rel="preload" as="image" href="assets/logo.png">
+    <link rel="preload" as="image" href="assets/PlaceHolderDefault.png">
+    <link rel="preload" as="image" href="assets/PlaceHolderPET.png">
+    <link rel="preload" as="image" href="assets/PlaceHolderAQUA.png">
+    <link rel="preload" as="image" href="assets/PlaceHolderRPG.png">
+    <link rel="preload" as="image" href="assets/PlaceHolderOFICINA.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --bg-dark: #0d0d0f;
+            --wa-light: #25D366;
+            --wa-dark: #128C7E;
+            --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            --transition: 0.4s ease-in-out;
+            --color-pet: #ff9f43;
+            --color-aqua: #48dbfb;
+            --color-rpg: #a55eea;
+            --color-tool: #a5b1c2;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-dark); color: #f4f4f4; font-family: 'Rajdhani', sans-serif; overflow-x: hidden; }
+
+        /* HEADER AJUSTADO COM ESPAÇO PARA LOGO */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 8%; background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px); position: fixed; width: 100%; z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        /* Container para alinhar Logo + Texto */
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px; /* Espaço entre o logo e o texto */
+        }
+        
+        .header-brand img {
+            /* MANTÉM A ALTURA DA FONTE DO TEXTO AO LADO */
+            height: 1.8rem; /* Mesma altura de .brand-text */
+            width: auto; /* Mantém a proporção da imagem */
+        }
+
+        .brand-text { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: var(--primary); font-weight: bold; }
+
+        .hero-wrap {
+            position: relative; height: 100vh; width: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden;
+        }
+
+        #dynamic-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            background-image: url('assets/PlaceHolderDefault.png');
+            transition: background-image var(--transition);
+            z-index: 1; filter: brightness(0.2) saturate(0.7);
+        }
+
+        .hero-content { position: relative; z-index: 2; text-align: center; margin-bottom: 30px; }
+        .hero-content h1 { font-family: 'Orbitron', sans-serif; font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; }
+        .hero-content h1 span { color: var(--primary); }
+
+        .knowledge-grid {
+            position: relative; z-index: 2;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px; width: 90%; max-width: 1300px;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px; border-radius: 15px;
+            transition: 0.3s; backdrop-filter: blur(10px);
+        }
+
+        .card-pet:hover { border-color: var(--color-pet); background: rgba(255, 159, 67, 0.1); }
+        .card-pet h3 { color: var(--color-pet); }
+        .card-aqua:hover { border-color: var(--color-aqua); background: rgba(72, 219, 251, 0.1); }
+        .card-aqua h3 { color: var(--color-aqua); }
+        .card-rpg:hover { border-color: var(--color-rpg); background: rgba(165, 94, 234, 0.1); }
+        .card-rpg h3 { color: var(--color-rpg); }
+        .card-tool:hover { border-color: var(--color-tool); background: rgba(165, 177, 194, 0.1); }
+        .card-tool h3 { color: var(--color-tool); }
+
+        .category-card h3 { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; margin-bottom: 15px; text-transform: uppercase; }
+        .category-card ul { list-style: none; text-align: left; }
+        .category-card ul li { font-size: 1.1rem; color: #eee; margin-bottom: 10px; padding-left: 15px; position: relative; }
+        .category-card ul li::before { content: "•"; position: absolute; left: 0; color: inherit; opacity: 0.6; }
+
+        /* CONTAINER DOS CONTATOS COM ALINHAMENTO PROPORCIONAL */
+        .contact-section {
+            position: relative; z-index: 2; margin-top: 40px;
+            display: flex; flex-direction: column; align-items: center; gap: 15px;
+        }
+
+        .wa-group { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; width: 100%; max-width: 535px; }
+        
+        .btn-link {
+            display: flex; align-items: center; gap: 12px;
+            color: white; padding: 15px 35px; border-radius: 5px;
+            text-decoration: none; font-weight: bold; font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem; transition: 0.3s; border: none;
+            /* LARGURA FIXA IGUAL PARA TODOS */
+            width: 260px;
+            justify-content: center;
+        }
+        
+        .andre { background-color: var(--wa-light); color: #000; }
+        .marino { background-color: var(--wa-dark); }
+        
+        /* INSTAGRAM COM A MESMA PROPORÇÃO E LARGURA DOS WHATSAPP */
+        .instagram { 
+            background: var(--insta-gradient); 
+        }
+        
+        .btn-link:hover { transform: translateY(-3px); filter: brightness(1.1); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .btn-link i { font-size: 1.4rem; }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .wa-group { flex-direction: column; align-items: center; }
+            .header-brand img { height: 1.4rem; }
+            .brand-text { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-brand">
+            <img src="assets/logo.png" alt="3D91 Logo">
+            <span class="brand-text">3D91</span>
+        </div>
+        <div style="font-size: 0.7rem; letter-spacing: 4px; color: var(--primary);">SÃO PAULO • BRASIL</div>
+    </header>
+
+    <div class="hero-wrap">
+        <div id="dynamic-bg" style="background-image: url('assets/PlaceHolderDefault.png');"></div>
+
+        <div class="hero-content">
+            <h1>SOLUÇÕES <span>3D91</span></h1>
+            <p style="color: #aaa; letter-spacing: 2px;">O limite é a sua imaginação</p>
+        </div>
+
+        <div class="knowledge-grid">
+            <div class="category-card card-pet" onmouseover="changeBg('assets/PlaceHolderPET.png')" onmouseout="resetBg()">
+                <h3>Pets</h3>
+                <ul>
+                    <li>Comedouros Ergonômicos</li>
+                    <li>Tags de Identificação</li>
+                    <li>Brinquedos Interativos</li>
+                    <li>Acessórios sob Medida</li>
+                </ul>
+            </div>
+
+            <div class="category-card card-aqua" onmouseover="changeBg('assets/PlaceHolderAQUA.png')" onmouseout="resetBg()">
+                <h3>Aquarismo</h3>
+                <ul>
+                    <li>Naufrágios e Ruínas</li>
+                    <li>Cavernas e Esconderijos</li>
+                    <li>Suportes de Filtros</li>
+                    <li>Material Atóxico</li>
+                </ul>
+            </div>
+
+            <div class="category-card card-rpg" onmouseover="changeBg('assets/PlaceHolderRPG.png')" onmouseout="resetBg()">
+                <h3>RPG</h3>
+                <ul>
+                    <li>Miniaturas em Resina</li>
+                    <li>Dice Towers Exclusivas</li>
+                    <li>Cenários de Masmorras</li>
+                    <li>Organizadores de Ficha</li>
+                </ul>
+            </div>
+
+            <div class="category-card card-tool" onmouseover="changeBg('assets/PlaceHolderOFICINA.png')" onmouseout="resetBg()">
+                <h3>Oficina</h3>
+                <ul>
+                    <li>Suportes para Chaves</li>
+                    <li>Organizadores de Brocas</li>
+                    <li>Peças de Reposição</li>
+                    <li>Gabaritos de Precisão</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <div class="wa-group">
+                <a href="https://wa.me/5511986253255" target="_blank" class="btn-link andre">
+                    <i class="fab fa-whatsapp"></i> ANDRÉ MARQUES
+                </a>
+                <a href="https://wa.me/5511940696818" target="_blank" class="btn-link marino">
+                    <i class="fab fa-whatsapp"></i> MARINO MARQUES
+                </a>
+            </div>
+            
+            <a href="https://www.instagram.com/impressao3d91/" target="_blank" class="btn-link instagram">
+                <i class="fab fa-instagram"></i> 3D91
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const bg = document.getElementById('dynamic-bg');
+        const defaultBg = "assets/PlaceHolderDefault.png";
+
+        function changeBg(url) {
+            bg.style.backgroundImage = `url('${url}')`;
+        }
+
+        function resetBg() {
+            bg.style.backgroundImage = `url('${defaultBg}')`;
+        }
+    </script>
+</body>
+</html>
