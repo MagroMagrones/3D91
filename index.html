@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D91 | Soluções em Impressão 3D</title>
 	
-	<link rel="icon" type="image/png" href="assets/logo.png">
+	<link rel="icon" type="image/png" href="Assets/logo.png">
     
-    <link rel="preload" as="image" href="assets/logo.png">
-    <link rel="preload" as="image" href="assets/PlaceHolderDefault.png">
-    <link rel="preload" as="image" href="assets/PlaceHolderPET.png">
-    <link rel="preload" as="image" href="assets/PlaceHolderAQUA.png">
-    <link rel="preload" as="image" href="assets/PlaceHolderRPG.png">
-    <link rel="preload" as="image" href="assets/PlaceHolderOFICINA.png">
+    <link rel="preload" as="image" href="Assets/logo.png">
+    <link rel="preload" as="image" href="Assets/PlaceHolderDefault.png">
+    <link rel="preload" as="image" href="Assets/PlaceHolderPET.png">
+    <link rel="preload" as="image" href="Assets/PlaceHolderAQUA.png">
+    <link rel="preload" as="image" href="Assets/PlaceHolderRPG.png">
+    <link rel="preload" as="image" href="Assets/PlaceHolderOFICINA.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
@@ -65,7 +65,7 @@
         #dynamic-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover; background-position: center;
-            background-image: url('assets/PlaceHolderDefault.png');
+            background-image: url('Assets/PlaceHolderDefault.png');
             transition: background-image var(--transition);
             z-index: 1; filter: brightness(0.2) saturate(0.7);
         }
@@ -142,14 +142,14 @@
 
     <header>
         <div class="header-brand">
-            <img src="assets/logo.png" alt="3D91 Logo">
+            <img src="Assets/logo.png" alt="3D91 Logo">
             <span class="brand-text">3D91</span>
         </div>
         <div style="font-size: 0.7rem; letter-spacing: 4px; color: var(--primary);">SÃO PAULO • BRASIL</div>
     </header>
 
     <div class="hero-wrap">
-        <div id="dynamic-bg" style="background-image: url('assets/PlaceHolderDefault.png');"></div>
+        <div id="dynamic-bg" style="background-image: url('Assets/PlaceHolderDefault.png');"></div>
 
         <div class="hero-content">
             <h1>SOLUÇÕES <span>3D91</span></h1>
@@ -157,7 +157,7 @@
         </div>
 
         <div class="knowledge-grid">
-            <div class="category-card card-pet" onmouseover="changeBg('assets/PlaceHolderPET.png')" onmouseout="resetBg()">
+            <div class="category-card card-pet" onmouseover="changeBg('Assets/PlaceHolderPET.png')" onmouseout="resetBg()">
                 <h3>Pets</h3>
                 <ul>
                     <li>Comedouros Ergonômicos</li>
@@ -167,7 +167,7 @@
                 </ul>
             </div>
 
-            <div class="category-card card-aqua" onmouseover="changeBg('assets/PlaceHolderAQUA.png')" onmouseout="resetBg()">
+            <div class="category-card card-aqua" onmouseover="changeBg('Assets/PlaceHolderAQUA.png')" onmouseout="resetBg()">
                 <h3>Aquarismo</h3>
                 <ul>
                     <li>Naufrágios e Ruínas</li>
@@ -177,7 +177,7 @@
                 </ul>
             </div>
 
-            <div class="category-card card-rpg" onmouseover="changeBg('assets/PlaceHolderRPG.png')" onmouseout="resetBg()">
+            <div class="category-card card-rpg" onmouseover="changeBg('Assets/PlaceHolderRPG.png')" onmouseout="resetBg()">
                 <h3>RPG</h3>
                 <ul>
                     <li>Miniaturas em Resina</li>
@@ -187,7 +187,7 @@
                 </ul>
             </div>
 
-            <div class="category-card card-tool" onmouseover="changeBg('assets/PlaceHolderOFICINA.png')" onmouseout="resetBg()">
+            <div class="category-card card-tool" onmouseover="changeBg('Assets/PlaceHolderOFICINA.png')" onmouseout="resetBg()">
                 <h3>Oficina</h3>
                 <ul>
                     <li>Suportes para Chaves</li>
@@ -216,7 +216,7 @@
 
     <script>
         const bg = document.getElementById('dynamic-bg');
-        const defaultBg = "assets/PlaceHolderDefault.png";
+        const defaultBg = "Assets/PlaceHolderDefault.png";
 
         function changeBg(url) {
             bg.style.backgroundImage = `url('${url}')`;
